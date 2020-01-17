@@ -3,13 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
-author: John Doe
-language: en
-timezone: ''
+title: 杰尼龟的博客
+subtitle: '网站副标题'
+description: '网站描述'
+keywords: oni,onichann,oniichann
+author: "Jenny Turtle"
+language: zh
+timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -40,6 +40,7 @@ external_link:
   field: site # Apply to the whole site
   exclude: ''
 filename_case: 0
+#预览草稿
 render_drafts: false
 post_asset_folder: true
 relative_link: false
