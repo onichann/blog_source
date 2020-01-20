@@ -104,8 +104,20 @@ deploy:
   branch: master
 
 # 网站图标
-favicon: http://img.duoziwang.com/2018/19/07021556710504.jpg
+favicon: https://img.duoziwang.com/2018/19/07021556710504.jpg
 # 作者头像，会出现在文章标题下方，不同于侧边栏的大头像
 avatar: http://img.duoziwang.com/2018/19/07021556710504.jpg
 
 qrcode: true
+
+live2d:
+  enable: true
+  scriptFrom: local
+  model:
+    use: live2d-widget-model-hibiki #模型选择
+  display:
+    position: left  #模型位置
+    width: 150       #模型宽度
+    height: 400      #模型高度
+  mobile:
+    show: true      #是否在手机端显示
