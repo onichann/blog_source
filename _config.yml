@@ -104,7 +104,7 @@ deploy:
   branch: master
 
 # 网站图标
-favicon: https://onichann.github.io/blog/07021556710504.jpg
+favicon: https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=c8bfbad34536acaf4ded9eae1db0e675/38dbb6fd5266d0160a7467c2992bd40734fa35ee.jpg
 # 作者头像，会出现在文章标题下方，不同于侧边栏的大头像
 avatar: http://img.duoziwang.com/2018/19/07021556710504.jpg
 
