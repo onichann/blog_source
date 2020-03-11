@@ -19,7 +19,7 @@ Git 通过子模块来解决这个问题。 子模块允许你将一个 Git 仓�
 
 我们将要演示如何在一个被分成一个主项目与几个子项目的项目上开发。
 
-我们首先将一个已存在的 Git 仓库添加为正在工作的仓库的子模块。 你可以通过在 **git submodule add** 命令后面加上想要跟踪的项目的相对或绝对 URL 来添加新的子模块。在本例中，我们将会添加一个名为 “DbConnector” 的库。
+我们首先将一个已存在的 Git 仓库添加为正在工作的仓库的子模块。 你可以通过在 **<font color=red>git submodule add</font>** 命令后面加上想要跟踪的项目的相对或绝对 URL 来添加新的子模块。在本例中，我们将会添加一个名为 “DbConnector” 的库。
 
 > $ git submodule add https://github.com/chaconinc/DbConnector
 Cloning into 'DbConnector'...
@@ -29,7 +29,7 @@ remote: Total 11 (delta 0), reused 11 (delta 0)
 Unpacking objects: 100% (11/11), done.
 Checking connectivity... done.
 
-默认情况下，子模块会将子项目放到一个与仓库同名的目录中，本例中是 “DbConnector”。 如果你想要放到其他地方，那么可以在命令结尾添加一个不同的路径。
+默认情况下，子模块会将子项目放到一个与仓库同名的目录中，本例中是 “DbConnector”。 <font color=red>如果你想要放到其他地方，那么可以在命令结尾添加一个不同的路径</font>。
 
 如果这时运行 **git status**，你会注意到几件事。
 
@@ -59,10 +59,10 @@ Changes to be committed:
 diff - -git a/DbConnector b/DbConnector
 new file mode 160000
 index 0000000..c3f01dc
-- - - /dev/null
-+++ b/DbConnector
-@@ -0,0 +1 @@
-+Subproject commit c3f01dc8862123d317dd46284b05b6892c7b29bc
+\- - - /dev/null
+\+++ b/DbConnector
+\@@ -0,0 +1 @@
+\+Subproject commit c3f01dc8862123d317dd46284b05b6892c7b29bc
 
 虽然 **DbConnector** 是工作目录中的一个子目录，但 Git 还是会将它视作一个子模块。当你不在那个目录中时，Git 并不会跟踪它的内容， 而是将它看作子模块仓库中的某个具体的提交。
 
@@ -72,12 +72,12 @@ index 0000000..c3f01dc
 diff - -git a/.gitmodules b/.gitmodules
 new file mode 100644
 index 0000000..71fc376
-- - - /dev/null
-+++ b/.gitmodules
-@@ -0,0 +1,3 @@
-+[submodule "DbConnector"]
-+       path = DbConnector
-+       url = https://github.com/chaconinc/DbConnector
+\- - - /dev/null
+\+++ b/.gitmodules
+\@@ -0,0 +1,3 @@
+\+[submodule "DbConnector"]
+\+       path = DbConnector
+\+       url = https://github.com/chaconinc/DbConnector
 Submodule DbConnector 0000000...c3f01dc (new submodule)
 
 当你提交时，会看到类似下面的信息：
@@ -121,7 +121,7 @@ $ cd DbConnector/
 $ ls
 $
 
-其中有 **DbConnector** 目录，不过是空的。 你必须运行两个命令：**git submodule init** 用来初始化本地配置文件，而 **git submodule update** 则从该项目中抓取所有数据并检出父项目中列出的合适的提交。
+其中有 **DbConnector** 目录，不过是空的。 你必须运行两个命令：**<font color=red>git submodule init</font>** 用来初始化本地配置文件，而 **<font color=red>git submodule update</font>** 则从该项目中抓取所有数据并检出父项目中列出的合适的提交。
 
 > $ git submodule init
 Submodule 'DbConnector' (https://github.com/chaconinc/DbConnector) registered for path 'DbConnector'
@@ -136,7 +136,7 @@ Submodule path 'DbConnector': checked out 'c3f01dc8862123d317dd46284b05b6892c7b2
 
 现在 DbConnector 子目录是处在和之前提交时相同的状态了。
 
-不过还有更简单一点的方式。 如果给 **git clone** 命令传递 **- -recurse-submodules** 选项，它就会自动初始化并更新仓库中的每一个子模块， 包括可能存在的嵌套子模块。
+不过还有更简单一点的方式。 如果**<font color=red>给 git clone 命令传递 - -recurse-submodules</font>** 选项，它就会自动初始化并更新仓库中的每一个子模块， 包括可能存在的嵌套子模块。
 
 > $ git clone - -recurse-submodules https://github.com/chaconinc/MainProject
 Cloning into 'MainProject'...
@@ -154,7 +154,7 @@ Unpacking objects: 100% (11/11), done.
 Checking connectivity... done.
 Submodule path 'DbConnector': checked out 'c3f01dc8862123d317dd46284b05b6892c7b29bc'
 
-如果你已经克隆了项目但忘记了 **- -recurse-submodules**，那么可以运行 **git submodule update - -init** 将 git submodule init 和 git submodule update 合并成一步。如果还要初始化、抓取并检出任何**嵌套的子模块**， 请使用简明的 **<font color=red>git submodule update - -init - -recursive</font>**。
+如果你已经克隆了项目但忘记了 **- -recurse-submodules**，那么可以运行 **<font color=red>git submodule update - -init</font>** 将 git submodule init 和 git submodule update 合并成一步。如果还要初始化、抓取并检出任何**嵌套的子模块**， 请使用简明的 **<font color=red>git submodule update - -init - -recursive</font>**。
 
 ### 在包含子模块的项目上工作
 
@@ -197,7 +197,7 @@ From https://github.com/chaconinc/DbConnector
    3f19983..d0354fc  master     -> origin/master
 Submodule path 'DbConnector': checked out 'd0354fc054692d3906c85c3af05ddce39a1c0644'
 
-此命令默认会假定你想要更新并检出子模块仓库的 master 分支。 不过你也可以设置为想要的其他分支。 例如，你想要 DbConnector 子模块跟踪仓库的 “stable” 分支，那么既可以在 .gitmodules 文件中设置 （这样其他人也可以跟踪它），也可以只在本地的 .git/config 文件中设置。 让我们在 .gitmodules 文件中设置它：
+**<font color=red>此命令默认会假定你想要更新并检出子模块仓库的 master 分支</font>**。 不过你也可以设置为想要的其他分支。 例如，你想要 DbConnector 子模块跟踪仓库的 “stable” 分支，那么既可以在 .gitmodules 文件中设置 （这样其他人也可以跟踪它），也可以只在本地的 .git/config 文件中设置。 让我们在 .gitmodules 文件中设置它：
 
 >$ git config -f .gitmodules submodule.DbConnector.branch stable
 .
@@ -226,6 +226,68 @@ Changes not staged for commit:
   modified:   DbConnector (new commits)
 .
 no changes added to commit (use "git add" and/or "git commit -a")
+
+如果你设置了配置选项 status.submodulesummary，Git 也会显示你的子模块的更改摘要：
+
+> $ git config status.submodulesummary 1
+.
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+.
+	modified:   .gitmodules
+	modified:   DbConnector (new commits)
+.
+Submodules changed but not updated:
+.
+*DbConnector c3f01dc...c87d55d (4):
+  catch non-null terminated lines
+  
+这时如果运行 git diff，可以看到我们修改了 .gitmodules 文件，同时还有几个已拉取的提交需要提交到我们自己的子模块项目中。
+
+>$ git diff
+diff --git a/.gitmodules b/.gitmodules
+index 6fc0b3d..fd1cc29 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -1,3 +1,4 @@
+ [submodule "DbConnector"]
+        path = DbConnector
+        url = https://github.com/chaconinc/DbConnector
+       branch = stable
+ Submodule DbConnector c3f01dc..c87d55d:
+  \> catch non-null terminated lines
+  \> more robust error handling
+  \> more efficient db routine
+  \> better connection routine
+
+这非常有趣，因为我们可以直接看到将要提交到子模块中的提交日志。 提交之后，你也可以运行 git log -p 查看这个信息。
+
+> $ git log -p --submodule
+commit 0a24cfc121a8a3c118e0105ae4ae4c00281cf7ae
+Author: Scott Chacon <schacon@gmail.com>
+Date:   Wed Sep 17 16:37:02 2014 +0200
+\
+    updating DbConnector for bug fixes
+\
+diff --git a/.gitmodules b/.gitmodules
+index 6fc0b3d..fd1cc29 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -1,3 +1,4 @@
+ [submodule "DbConnector"]
+        path = DbConnector
+        url = https://github.com/chaconinc/DbConnector
+\+       branch = stable
+Submodule DbConnector c3f01dc..c87d55d:
+  \> catch non-null terminated lines
+ \> more robust error handling
+  \> more efficient db routine
+  \> better connection routine
 
 当运行 **git submodule update - -remote** 时，Git 默认会尝试更新 所有 子模块， 所以如果有很多子模块的话，你可以传递想要更新的子模块的名字。比如：子模块路径：themes/material-x ,那么执行 **git submodule update - -remote themes/material-x**  即可。
 
@@ -275,12 +337,11 @@ $ git status
 Your branch is up-to-date with 'origin/master'.
 nothing to commit, working tree clean
 
-请注意，为安全起见，如果 MainProject 提交了你刚拉取的新子模块，那么应该在 git submodule update 后面添加 - -init 选项，如果子模块有嵌套的子模块，则应使用 - -recursive 选项。
-
+**请注意，为安全起见，如果 MainProject 提交了你刚拉取的`新子模块`，那么应该在 git submodule update 后面添加 - -init 选项，如果子模块有嵌套的子模块，则应使用 - -recursive 选项。**  **<font color='red'>git submodule update - -init - -recursive</font>**
 
 **如果你想自动化此过程，那么可以为 git pull 命令添加 - -recurse-submodules 选项（从 Git 2.14 开始）。 这会让 Git 在拉取后运行 git submodule update，将子模块置为正确的状态。 此外，如果你想让 Git 总是以 - -recurse-submodules 拉取，可以将配置选项 submodule.recurse 设置为 true （从 Git 2.15 开始可用于 git pull）。此选项会让 Git 为所有支持 - -recurse-submodules 的命令使用该选项（除 clone 以外）。**
 
-在为父级项目拉取更新时，还会出现一种特殊的情况：在你拉取的提交中， 可能 .gitmodules 文件中记录的子模块的 URL 发生了改变。 比如，若子模块项目改变了它的托管平台，就会发生这种情况。 此时，若父级项目引用的子模块提交不在仓库中本地配置的子模块远端上，那么执行 git pull - -recurse-submodules 或 git submodule update 就会失败。 为了补救，git submodule sync 命令需要：
+在为父级项目拉取更新时，还会出现一种特殊的情况：在你拉取的提交中， 可能 .gitmodules 文件中记录的子模块的 URL 发生了改变。 比如，若子模块项目改变了它的托管平台，就会发生这种情况。 此时，若父级项目引用的子模块提交不在仓库中本地配置的子模块远端上，那么执行 git pull - -recurse-submodules 或 git submodule update 就会失败。 为了补救，`git submodule sync` 命令需要：
 
 >#将新的 URL 复制到本地配置中
 $ git submodule sync - -recursive
@@ -288,4 +349,21 @@ $ git submodule sync - -recursive
 $ git submodule update - -init - -recursive
 
 ### 在子模块上工作
+**你很有可能正在使用子模块，因为你确实想在子模块中编写代码的同时，还想在主项目上编写代码（或者跨子模块工作）。** 否则你大概只能用简单的依赖管理系统（如 Maven 或 Rubygems）来替代了。
+
+现在我们将通过一个例子来演示如何在子模块与主项目中同时做修改，以及如何同时提交与发布那些修改。
+
+**到目前为止，当我们运行 git submodule update 从子模块仓库中抓取修改时， Git 将会获得这些改动并更新子目录中的文件，但是会将子仓库留在一个称作“游离的 HEAD”的状态。 这意味着没有本地工作分支（例如 “master” ）跟踪改动。 如果没有工作分支跟踪更改，也就意味着即便你将更改提交到了子模块，这些更改也很可能会在下次运行 git submodule update 时丢失。如果你想要在子模块中跟踪这些修改，还需要一些额外的步骤。**
+
+**这一部分个人建议还是cd 到对应子模块 ,单独更新提交比较容易,个人使用的话，基本上就master分支,参考提示进行更新提交即可。如果子模块还需要进行切其他分支，这个就参考官方介绍,比较繁琐**
+
+### 子模的块技巧
+
+你可以做几件事情来让用子模块工作轻松一点儿。
+
+#### 子模块遍历
+
 todo...
+
+
+
