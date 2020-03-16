@@ -11,12 +11,12 @@ categories: [SonarQube]
 
 *文章和[SonarQube7.4安装和使用](https://www.jianshu.com/p/dd4a4bc59fc3 "点击我") 相同，因为原篇也是本人所写，移植过来而已*
 
-##前期准备：
+## 前期准备：
 - jdk 1.8.0._131
 - maven 3.5.3
 - mysql 5.7
 
-##开始搭建
+## 开始搭建
 1. 软件下载
 登陆网址 https://www.sonarqube.org/downloads/
 直接下载最新的社区版即可
@@ -109,7 +109,7 @@ mvn sonar:sonar \
 - 在进程中关闭所有java.exe进程
 - 然后重新进入.\sonarqube-7.4\bin\windows-x86-64\，运行StartSonar.bat文件
 
-##IDEA集成SonarLint
+## IDEA集成SonarLint
 SonarLint 是一个插件，可以集成到开发工具里，有以下功能
 - 当打开java文件时可自动分析静态文件，也可以手动对整个项目做分析；
 - 可连接到SonarQube同步分析规则、质量规则与自定义设置；
